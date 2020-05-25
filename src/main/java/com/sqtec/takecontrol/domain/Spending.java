@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Spending implements Serializable {
 
@@ -42,11 +44,13 @@ public class Spending implements Serializable {
 
 	@Column(name = "recurrent", nullable = false)
 	private boolean recurrent;
-
+	
 	@Column(name = "start_date", nullable = false)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "UTC")
 	private Date startDate;
 
 	@Column(name = "end_date", nullable = false)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "UTC")
 	private Date endDate;
 
 	public Spending() {
